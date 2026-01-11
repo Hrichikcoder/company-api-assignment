@@ -1,49 +1,141 @@
+
 # Company API - Employee Management System
 
-## Project Overview
-This is a Django REST API project that performs complete CRUD (Create, Read, Update, Delete) operations for managing employee records. [cite_start]It uses **PostgreSQL** as the database and follows the Model-Serializer-View architecture provided by the **Django REST Framework**[cite: 3].
+A robust RESTful API built with **Django** and **Django REST Framework** to manage employee records. This project uses **PostgreSQL** for data persistence and implements a complete CRUD (Create, Read, Update, Delete) architecture.
 
-## Tech Stack
-* [cite_start]**Language:** Python [cite: 5]
-* [cite_start]**Framework:** Django [cite: 6]
-* [cite_start]**API Toolkit:** Django REST Framework [cite: 7]
-* [cite_start]**Database:** PostgreSQL [cite: 8]
-* **Database Adapter:** psycopg2-binary
+## 📌 Features
+* **Create** new employee records with validation.
+* **Read** a list of all employees or retrieve specific details by ID.
+* **Update** existing employee information (salary, department, etc.).
+* **Delete** employee records from the database.
+* **Database Integration:** Fully connected to a PostgreSQL backend.
 
-## Prerequisites
-* Python (3.8 or higher)
-* PostgreSQL installed and running
-* pgAdmin 4 (optional, for database management)
+## 🛠️ Tech Stack
+* **Language:** Python 3.x
+* **Framework:** Django 5.x / 6.x
+* **API Toolkit:** Django REST Framework (DRF)
+* **Database:** PostgreSQL
+* **Adapter:** psycopg2-binary
 
-## Setup Instructions
+---
 
-### 1. Environment Setup
-Navigate to the project folder and create a virtual environment:
+## 🚀 Setup & Installation
+
+Follow these steps to set up the project locally.
+
+### 1. Clone the Repository
 ```bash
+git clone [https://github.com/YOUR_USERNAME/company-api-assignment.git](https://github.com/YOUR_USERNAME/company-api-assignment.git)
+cd company-api-assignment
+2. Create Virtual Environment
+It is recommended to use a virtual environment to manage dependencies.
+
+Bash
+
+# Windows
 python -m venv venv
+.\venv\Scripts\activate
 
-Activate the virtual environment:Windows:Bash.\venv\Scripts\activate
-Mac/Linux:Bashsource venv/bin/activate
+# Mac/Linux
+python3 -m venv venv
+source venv/bin/activate
+3. Install Dependencies
+Install all required libraries from the requirements.txt file.
 
-2. Install DependenciesInstall the required libraries listed in requirements.txt:Bashpip install -r requirements.txt
+Bash
 
-3. Database ConfigurationOpen pgAdmin or your terminal and create a new database named company_db2.Open company_api/settings.py.Update the DATABASES section with your PostgreSQL password:PythonDATABASES = {
+pip install -r requirements.txt
+🗄️ Database Configuration
+1. Create the Database
+Ensure PostgreSQL is running, then create a new database named company_db.
+
+Using Terminal:
+
+SQL
+
+CREATE DATABASE company_db;
+Using pgAdmin: Right-click Databases > Create > Database... > Name it company_db.
+
+2. Configure Settings
+Open company_api/settings.py and update the DATABASES section with your PostgreSQL credentials:
+
+Python
+
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'company_db',
         'USER': 'postgres',
-        'PASSWORD': 'YOUR_PASSWORD_HERE',  # <--- Update this
+        'PASSWORD': 'YOUR_PASSWORD_HERE',  # <--- REPLACE THIS
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
-4. Run MigrationsCreate the database tables for the Employee model:Bashpython manage.py migrate
+3. Run Migrations
+Apply the database migrations to create the necessary tables.
 
-5. Start the ServerRun the development server:Bashpython manage.py runserver
+Bash
 
-The API will be available at: http://127.0.0.1:8000/api/employees/API Endpoints DocumentationThe API supports the following CRUD operations3:MethodEndpointDescriptionPOST/api/employees/Create: Add a new employee record.GET/api/employees/Read: Retrieve a list of all employees.GET/api/employees/<id>/Read: Retrieve details of a single employee by ID.PUT/api/employees/<id>/Update: Modify an existing employee's details.DELETE/api/employees/<id>/Delete: Remove an employee record permanently.Example JSON Payload (Create/Update)JSON{
-    "name": "Amit",
+python manage.py migrate
+⚡ Running the Application
+Start the development server:
+
+Bash
+
+python manage.py runserver
+The API will be accessible at: http://127.0.0.1:8000/api/employees/
+
+📖 API Endpoints
+Method	Endpoint	Description
+GET	/api/employees/	Retrieve a list of all employees.
+POST	/api/employees/	Create a new employee.
+GET	/api/employees/<id>/	Retrieve details of a specific employee.
+PUT	/api/employees/<id>/	Update an existing employee's details.
+DELETE	/api/employees/<id>/	Delete an employee record.
+
+Export to Sheets
+
+Example JSON Payload (POST/PUT)
+JSON
+
+{
+    "name": "Amit Sharma",
     "email": "amit@test.com",
     "department": "IT",
-    "salary": 50000.00
+    "salary": 60000.00
 }
+🧪 Testing
+You can test the API using Postman or cURL.
+
+Create Employee: Send a POST request to /api/employees/ with the JSON payload above.
+
+List Employees: Send a GET request to /api/employees/.
+
+Update Employee: Send a PUT request to /api/employees/1/ with updated JSON data.
+
+Delete Employee: Send a DELETE request to /api/employees/1/.
+
+📂 Project Structure
+Plaintext
+
+Django_Assignment/
+│
+├── company_api/        # Project Configuration
+│   ├── settings.py
+│   ├── urls.py
+│   └── ...
+│
+├── employees/          # App Logic
+│   ├── models.py       # Employee Database Model
+│   ├── serializers.py  # Data Conversion Logic
+│   ├── views.py        # API Views (CRUD)
+│   ├── urls.py         # App URL Routing
+│   └── ...
+│
+├── manage.py           # Django Command Line Utility
+├── requirements.txt    # Project Dependencies
+└── README.md           # Project Documentation
+👤 Author
+Name: Hrichik Khandait
+
+Role: Computer Science Undergrad (B.Tech)
