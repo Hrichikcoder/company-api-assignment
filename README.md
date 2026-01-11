@@ -90,7 +90,7 @@ Method	Endpoint	Description
 GET	/api/employees/	Retrieve a list of all employees.
 POST	/api/employees/	Create a new employee.
 GET	/api/employees/<id>/	Retrieve details of a specific employee.
-PUT	/api/employees/<id>/	Update an existing employee's details.
+PUT	/api/employees/<id>/	Update an existing employees details.
 DELETE	/api/employees/<id>/	Delete an employee record.
 
 Export to Sheets
